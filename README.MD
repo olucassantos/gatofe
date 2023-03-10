@@ -121,3 +121,11 @@ Para utilizar links para as rotas dentro das views, basta utilizar o comando aba
     <a href="{{ route('gatos.index') }}">Gatos</a>
 
 O comando acima irá gerar um link para a rota gatos.index, que é a rota que lista todos os gatos e que foi definida em routes/web.php.
+
+Para utilizar variáveis dentro das views, basta utilizar o comando abaixo:
+
+    {{ $gato->nome }}
+
+O comando acima irá mostrar o nome do gato que está sendo exibido na view. Note que as chaves duplas são utilizadas para mostrar o valor da variável. As chaves simples são utilizadas para executar comandos do Blade.
+
+Os comandos do Blade são definidos na documentação do Laravel: https://laravel.com/docs/9.x/blade
