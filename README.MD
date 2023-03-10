@@ -102,6 +102,7 @@ Cada rota possui um método (get, post, put, delete) e uma url. O método é uti
 No exemplo acima, estamos criando uma rota do tipo get que irá acessar a url /gatos e irá direcionar para o controller GatosController e para a função index. Também definimos um nome para a rota. O nome da rota é utilizado para gerar links para as rotas dentro das telas.
 
 Cada rota possui um método:
+
     - get - Recebe uma requisição do tipo get. Utilizado para solicitar dados do servidor.
     - post - Recebe uma requisição do tipo post. Utilizado para enviar dados para o servidor.
     - put - Recebe uma requisição do tipo put. Utilizado para atualizar dados no servidor.
