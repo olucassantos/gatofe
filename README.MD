@@ -80,7 +80,7 @@ Para criar um controller, basta executar o comando abaixo:
 
 O nome do controller deve ser no plural e no padrão CamelCase. O controller deve ser criado dentro da pasta app/Http/Controllers.
 
-Dentro do controller devemos definir as funções que serão utilizadas para cada rota (ações do usuário);
+Dentro do controller devemos definir as *funções* que serão utilizadas para cada rota (ações do usuário);
 
 Por padrão um CRUD possui as seguintes ações:
 - index - Lista todos os registros
@@ -91,3 +91,18 @@ Por padrão um CRUD possui as seguintes ações:
 - update - Atualiza o registro no banco de dados
 - destroy - Deleta o registro no banco de dados
 
+## Criação das Rotas
+
+As rotas são responsáveis por receber as requisições do usuário e direcionar para o controller correto. As rotas ficam na pasta routes/web.php.
+
+Cada rota possui um método (get, post, put, delete) e uma url. O método é utilizado para definir o tipo de requisição que a rota irá receber. A url é a url que o usuário irá acessar para acessar a rota. Por convenção também definimos um nome para a rota. Ex:
+
+    Route::get('/gatos', 'GatosController@index')->name('gatos.index');
+
+No exemplo acima, estamos criando uma rota do tipo get que irá acessar a url /gatos e irá direcionar para o controller GatosController e para a função index. Também definimos um nome para a rota. O nome da rota é utilizado para gerar links para as rotas dentro das telas.
+
+Cada rota possui um método:
+    - get - Recebe uma requisição do tipo get. Utilizado para solicitar dados do servidor.
+    - post - Recebe uma requisição do tipo post. Utilizado para enviar dados para o servidor.
+    - put - Recebe uma requisição do tipo put. Utilizado para atualizar dados no servidor.
+    - delete - Recebe uma requisição do tipo delete. Utilizado para deletar dados no servidor.
