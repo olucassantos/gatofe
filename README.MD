@@ -69,3 +69,25 @@ Para criar os campos dentro da migration devemos utilizar os métodos diponiveis
 Após criar a migration, basta executar o comando abaixo para criar a tabela no banco de dados:
 
     php artisan migrate
+
+## Criação do Controller
+
+O controller é responsável por receber as requisições e retornar as respostas feitas pelo usuário através das views e das rotas. O controller receber um pedido, processa a informação e retorna uma resposta. A resposta pode ser uma view (uma página), um json (formato de dados para javascript*) ou um redirecionamento (redireciona para outra página).
+
+Para criar um controller, basta executar o comando abaixo:
+
+    php artisan make:controller GatosController
+
+O nome do controller deve ser no plural e no padrão CamelCase. O controller deve ser criado dentro da pasta app/Http/Controllers.
+
+Dentro do controller devemos definir as funções que serão utilizadas para cada rota (ações do usuário);
+
+Por padrão um CRUD possui as seguintes ações:
+- index - Lista todos os registros
+- create - Mostra o formulário para criar um registro
+- store - Salva o registro no banco de dados
+- show - Mostra um registro específico
+- edit - Mostra o formulário para editar um registro
+- update - Atualiza o registro no banco de dados
+- destroy - Deleta o registro no banco de dados
+
