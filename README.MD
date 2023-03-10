@@ -65,3 +65,7 @@ GatoFe é o nome do projeto. O nome pode ser qualquer um.
     As migrations ficam na pasta: database/migrations/...
 
     Para criar os campos dentro da migration devemos utilizar os métodos diponiveis na documentação do laravel: https://laravel.com/docs/9.x/migrations#creating-columns
+
+    Após criar a migration, basta executar o comando abaixo para criar a tabela no banco de dados:
+
+    php artisan migrate
