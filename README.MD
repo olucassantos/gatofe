@@ -107,3 +107,17 @@ Cada rota possui um método:
     - post - Recebe uma requisição do tipo post. Utilizado para enviar dados para o servidor.
     - put - Recebe uma requisição do tipo put. Utilizado para atualizar dados no servidor.
     - delete - Recebe uma requisição do tipo delete. Utilizado para deletar dados no servidor.
+
+## Criação das Views
+
+As views são as telas que o usuário irá interagir. As views ficam na pasta resources/views. O laravel disponibiliza um motor de processamento de templates chamado Blade. O Blade é um motor de templates simples e rápido. O Blade é utilizado para gerar as views.
+
+Para criar uma view, basta criar um arquivo com a extensão .blade.php dentro da pasta resources/views.
+
+Por conveniencia as views são organizadas em pastas com o mesmo nome do controller. Ex: O controller GatosController possui as views dentro da pasta resources/views/gatos.
+
+Para utilizar links para as rotas dentro das views, basta utilizar o comando abaixo:
+
+    <a href="{{ route('gatos.index') }}">Gatos</a>
+
+O comando acima irá gerar um link para a rota gatos.index, que é a rota que lista todos os gatos e que foi definida em routes/web.php.
