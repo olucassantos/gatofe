@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Gato;
 use Illuminate\Http\Request;
 
 class GatosController extends Controller
@@ -11,7 +12,10 @@ class GatosController extends Controller
      */
     public function index()
     {
-        //
+        // Pega todos os registos da tabela relacionada ao modelo Gato
+        $gatos = Gato::all();
+
+        return view('gatos.index', compact('gatos'));
     }
 
     /**

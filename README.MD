@@ -129,3 +129,25 @@ Para utilizar variáveis dentro das views, basta utilizar o comando abaixo:
 O comando acima irá mostrar o nome do gato que está sendo exibido na view. Note que as chaves duplas são utilizadas para mostrar o valor da variável. As chaves simples são utilizadas para executar comandos do Blade.
 
 Os comandos do Blade são definidos na documentação do Laravel: https://laravel.com/docs/9.x/blade
+
+## Preenchendo o Controller e as Views
+
+### Index - Lista com todos os registros
+
+Quando o usuário acessa a rota '/gatos' o controller GatosController irá executar a função index. A função index irá buscar todos os registros da tabela gatos e irá retornar a view gatos.index com os registros.
+
+    public function index()
+    {
+        $gatos = Gato::all();
+        return view('gatos.index', compact('gatos'));
+    }
+
+No arquivo de view gatos/index.blade.php, agora possuimos acesso a variável $gatos, nos permitindo utilizar laços de repetição (for, foreach, while) para exibir os registros.
+
+    @foreach ($gatos as $gato)
+        <tr>
+            <td>{{ $gato->nome }}</td>
+            <td>{{ $gato->raca }}</td>
+            <td>{{ $gato->idade }}</td>
+        </tr>
+    @endforeach
