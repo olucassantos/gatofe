@@ -23,7 +23,7 @@ class GatosController extends Controller
      */
     public function create()
     {
-        //
+        return view('gatos.create');
     }
 
     /**

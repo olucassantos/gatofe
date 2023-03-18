@@ -151,3 +151,27 @@ No arquivo de view gatos/index.blade.php, agora possuimos acesso a variável $ga
             <td>{{ $gato->idade }}</td>
         </tr>
     @endforeach
+
+### Create - Mostra o formulário para criar um registro
+
+Quando o usuário acessa a rota '/gatos/novo' o controller GatosController irá executar a função create. A função create irá retornar a view gatos.create.
+
+    public function create()
+    {
+        return view('gatos.create');
+    }
+
+Dentro da view gatos/create.blade.php, devemos criar um formulário para criar um novo registro. O formulário deve ser do tipo post e deve apontar para a rota gatos.store.
+
+    <form action="{{ route('gatos.store') }}" method="post">
+        @csrf
+        <input type="text" name="nome" placeholder="Nome">
+        <input type="text" name="raca" placeholder="Raça">
+        <input type="number" name="idade" placeholder="Idade">
+        <button type="submit">Salvar</button>
+    </form>
+
+
+    Obs: Note o uso do *@csrf* no formulário. O @csrf é um comando do Blade que gera um token de segurança para o formulário. O token de segurança é utilizado para evitar ataques de falsificação de solicitação entre sites.
+
+    Obs: *Cada campo não pode ter o mesmo nome. O nome do campo deve ser o mesmo nome do campo na tabela do banco de dados.*
