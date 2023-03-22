@@ -15,6 +15,7 @@ class GatosController extends Controller
         // Pega todos os registos da tabela relacionada ao modelo Gato
         $gatos = Gato::all();
 
+        // Manda os dados para uma view, no caso gatos.index
         return view('gatos.index', compact('gatos'));
     }
 
