@@ -175,3 +175,21 @@ Dentro da view gatos/create.blade.php, devemos criar um formulário para criar u
     Obs: Note o uso do *@csrf* no formulário. O @csrf é um comando do Blade que gera um token de segurança para o formulário. O token de segurança é utilizado para evitar ataques de falsificação de solicitação entre sites.
 
     Obs: *Cada campo não pode ter o mesmo nome. O nome do campo deve ser o mesmo nome do campo na tabela do banco de dados.*
+
+### Store - Salva o registro no banco de dados
+
+Quando o usuário preenche o formulário e clica em salvar, o formulário irá enviar uma requisição do tipo post para a rota gatos.store. A rota gatos.store irá direcionar para o controller GatosController e para a função store.
+
+    public function store(Request $request)
+    {
+        $gato = new Gato();
+
+        $gato->nome = $request->nome;
+        $gato->raca = $request->raca;
+        $gato->idade = $request->idade;
+        $gato->save();
+
+        return redirect()->route('gatos.index');
+    }
+
+Após salvar o registro no banco de dados, devemos redirecionar o usuário para a rota gatos.show, que mostra os detalhes do gato cadastrado
