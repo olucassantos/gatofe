@@ -30,9 +30,24 @@ class GatosController extends Controller
     /**
      * Armazena um novo gato
      */
-    public function store(Request $request)
+    public function store(Request $requisicao)
     {
-        //
+        // Cria um novo objeto do tipo Gato em branco
+        $gato = new Gato();
+
+        // Preenche os campos do objeto com os dados da requisição
+        $gato->nome = $requisicao->nome;
+        $gato->raca = $requisicao->raca;
+        $gato->idade = $requisicao->idade;
+        $gato->sexo = $requisicao->sexo;
+        $gato->cor = $requisicao->cor;
+        $gato->gatografia = $requisicao->gatografia;
+
+        // Salva o objeto no banco de dados
+        $gato->save();
+
+        // Redireciona para a página de detalhes do gato
+        return redirect()->route('gatos.show', $gato->id);
     }
 
     /**
@@ -40,7 +55,7 @@ class GatosController extends Controller
      */
     public function show($id)
     {
-        //
+        return 'Oi, eu sou o gato de id ' . $id . '!';
     }
 
     /**
