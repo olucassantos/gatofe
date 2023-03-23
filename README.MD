@@ -193,3 +193,12 @@ Quando o usuário preenche o formulário e clica em salvar, o formulário irá e
     }
 
 Após salvar o registro no banco de dados, devemos redirecionar o usuário para a rota gatos.show, que mostra os detalhes do gato cadastrado
+
+### Show - Mostra os detalhes de um registro
+
+Quando o usuário acessa a rota '/gatos/{gato}' o controller GatosController irá executar a função show. A função show irá buscar o registro com o id passado na url e irá retornar a view gatos.show com os detalhes do registro.
+
+    public function show(Gato $gato)
+    {
+        return view('gatos.show', compact('gato'));
+    }

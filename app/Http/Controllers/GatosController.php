@@ -52,10 +52,16 @@ class GatosController extends Controller
 
     /**
      * Mostra um gato específico
+     *
+     * O parametro $gato é um objeto do tipo Gato que é passado automaticamente
+     * pelo Laravel, pois o nome do parametro é o mesmo nome do parametro que
+     * está na rota. O Laravel faz a busca no banco de dados e retorna o objeto
+     * que corresponde ao id passado na rota.
      */
-    public function show($id)
+    public function show(Gato $gato)
     {
-        return 'Oi, eu sou o gato de id ' . $id . '!';
+        // Retorna a view gatos.view com o objeto $gato
+        return view('gatos.view', compact('gato'));
     }
 
     /**

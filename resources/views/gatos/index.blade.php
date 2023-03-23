@@ -27,7 +27,11 @@
                         <td>{{ $gato->nome }}</td>
                         <td>{{ $gato->cor }}</td>
                         <td>{{ $gato->sexo }}</td>
-                        <td></td>
+                        <td>
+                            <a class="link" href="{{ route('gatos.show', $gato->id) }}">
+                                Ver
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
             </table>
