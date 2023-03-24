@@ -30,13 +30,13 @@ Route::get('/gatos/novo', [GatosController::class, 'create'])->name('gatos.creat
 Route::get('/gatos/{gato}', [GatosController::class, 'show'])->name('gatos.show');
 
 // Rota para o formulário de edição de gatos
-Route::get('/gatos/{id}/edit', [GatosController::class, 'edit'])->name('gatos.edit');
+Route::get('/gatos/{gato}/editar', [GatosController::class, 'edit'])->name('gatos.edit');
 
 // Rota que armazena um novo gato no banco de dados
 Route::post('/gatos', [GatosController::class, 'store'])->name('gatos.store');
 
 // Rota que atualiza um gato específico no banco de dados
-Route::put('/gatos/{id}', [GatosController::class, 'update'])->name('gatos.update');
+Route::put('/gatos/{gato}', [GatosController::class, 'update'])->name('gatos.update');
 
 // Rota que remove um gato específico do banco de dados
 Route::delete('/gatos/{id}', [GatosController::class, 'destroy'])->name('gatos.destroy');

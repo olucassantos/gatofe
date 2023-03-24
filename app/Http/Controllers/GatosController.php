@@ -67,17 +67,22 @@ class GatosController extends Controller
     /**
      * Mostra o formulário para editar um gato específico
      */
-    public function edit($id)
+    public function edit(Gato $gato)
     {
-        //
+        // Retorna a view gatos.edit com o objeto $gato
+        return view('gatos.edit', compact('gato'));
     }
 
     /**
      * Atualiza um gato específico
      */
-    public function update(Request $request, $id)
+    public function update(Request $requisicao, Gato $gato)
     {
-        //
+        // Atualiza o objeto com os dados da requisição
+        $gato->update($requisicao->all());
+
+        // Redireciona para a página de detalhes do gato
+        return redirect()->route('gatos.show', $gato->id);
     }
 
     /**

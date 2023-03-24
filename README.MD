@@ -202,3 +202,38 @@ Quando o usuário acessa a rota '/gatos/{gato}' o controller GatosController ir�
     {
         return view('gatos.show', compact('gato'));
     }
+
+### Edit - Mostra o formulário para editar um registro
+
+Quando o usuário acessa a rota '/gatos/{gato}/editar' o controller GatosController irá executar a função edit. A função edit irá buscar o registro com o id passado na url e irá retornar a view gatos.edit com os detalhes do registro para edição.
+
+    public function edit(Gato $gato)
+    {
+        return view('gatos.edit', compact('gato'));
+    }
+
+Dentro da view gatos/edit.blade.php, devemos criar um formulário para editar o registro. O formulário deve ser do tipo post e deve apontar para a rota gatos.update.
+
+    <form action="{{ route('gatos.update', $gato->id) }}" method="post">
+        @csrf
+        @method('PUT')
+        <input type="text" name="nome" placeholder="Nome" value="{{ $gato->nome }}">
+        <input type="text" name="raca" placeholder="Raça" value="{{ $gato->raca }}">
+        <input type="number" name="idade" placeholder="Idade" value="{{ $gato->idade }}">
+        <button type="submit">Salvar</button>
+    </form>
+
+    Obs: Note o uso do *@method('PUT')* no formulário. O @method é um comando do Blade que gera um input hidden com o valor passado no parâmetro. O input hidden é utilizado para informar o método da requisição.
+
+### Update - Salva as alterações do registro no banco de dados
+
+Quando o usuário preenche o formulário e clica em salvar, o formulário irá enviar uma requisição do tipo post para a rota gatos.update. A rota gatos.update irá direcionar para o controller GatosController e para a função update.
+
+    public function update(Request $request, Gato $gato)
+    {
+        $gato->update($request->all());
+
+        return redirect()->route('gatos.show', $gato->id);
+    }
+
+Após salvar as alterações no banco de dados, devemos redirecionar o usuário para a rota gatos.show, que mostra os detalhes do gato cadastrado.
