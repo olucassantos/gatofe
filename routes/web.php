@@ -39,4 +39,4 @@ Route::post('/gatos', [GatosController::class, 'store'])->name('gatos.store');
 Route::put('/gatos/{gato}', [GatosController::class, 'update'])->name('gatos.update');
 
 // Rota que remove um gato específico do banco de dados
-Route::delete('/gatos/{id}', [GatosController::class, 'destroy'])->name('gatos.destroy');
+Route::delete('/gatos/{gato}', [GatosController::class, 'destroy'])->name('gatos.destroy');

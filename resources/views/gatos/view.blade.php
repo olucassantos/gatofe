@@ -28,7 +28,15 @@
                 {{ $gato->gatografia }}
             </p>
 
-            <a href="{{ route('gatos.index') }}">Voltar a lista</a>
+            <a class="btn btn-light" href="{{ route('gatos.index') }}">Voltar a lista</a>
+            <a class="btn btn-warning" href="{{ route('gatos.edit', $gato->id) }}">Editar</a>
+
+            <form method="POST" action="{{ route('gatos.destroy', $gato->id) }}">
+                @csrf
+                @method('DELETE')
+
+                <input type="submit" value="Excluir Gato" class="btn btn-danger">
+            </form>
         </div>
     </body>
 </html>

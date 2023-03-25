@@ -88,8 +88,10 @@ class GatosController extends Controller
     /**
      * Remove um gato específico
      */
-    public function destroy($id)
+    public function destroy(Gato $gato)
     {
+        $gato->delete();
 
+        return redirect()->route('gatos.index');
     }
 }
