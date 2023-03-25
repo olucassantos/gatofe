@@ -237,3 +237,30 @@ Quando o usuário preenche o formulário e clica em salvar, o formulário irá e
     }
 
 Após salvar as alterações no banco de dados, devemos redirecionar o usuário para a rota gatos.show, que mostra os detalhes do gato cadastrado.
+
+### Destroy - Deleta o registro do banco de dados
+
+Quando o usuário clica em excluir, o formulário irá enviar uma requisição do tipo post para a rota gatos.destroy. A rota gatos.destroy irá direcionar para o controller GatosController e para a função destroy.
+
+    public function destroy(Gato $gato)
+    {
+        $gato->delete();
+
+        return redirect()->route('gatos.index');
+    }
+
+Após deletar o registro do banco de dados, devemos redirecionar o usuário para a rota gatos.index, que mostra a lista de gatos cadastrados.
+
+No lugar onde o usuário vai clicar para excluir o registro, devemos criar um formulário do tipo post e apontar para a rota gatos.destroy.
+
+    <form action="{{ route('gatos.destroy', $gato->id) }}" method="post">
+        @csrf
+        @method('DELETE')
+        <button type="submit">Excluir</button>
+    </form>
+
+    Obs: Note o uso do *@method('DELETE')* no formulário. O @method é um comando do Blade que gera um input hidden com o valor passado no parâmetro. O input hidden é utilizado para informar o método da requisição.
+
+# 5. Conclusão
+
+Neste tutorial, aprendemos como criar um CRUD completo utilizando o Laravel. O Laravel é um framework PHP que facilita o desenvolvimento de aplicações web. O Laravel possui uma série de recursos que facilitam o desenvolvimento de aplicações web, como: rotas, controllers, models, migrations, views, entre outros.
